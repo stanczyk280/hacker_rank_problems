@@ -20,5 +20,5 @@ compare([AHead | ATail], [BHead | BTail], ScoreA, ScoreB) ->
                                         true -> {ScoreA+1,ScoreB};
                                         false -> {ScoreA,ScoreB+1}
                                     end
-                            end,
+                                end,
 compare(ATail,BTail,NewScoreA,NewScoreB).
