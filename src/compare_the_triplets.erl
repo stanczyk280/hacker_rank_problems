@@ -1,17 +1,18 @@
 -module(compare_the_triplets).
 -export([main/2]).
 
+%problem description: https://www.hackerrank.com/challenges/compare-the-triplets
 
 main(A,B) ->
     compare(A,B).
 
 compare(A,B)->
-    [ScoreA, ScoreB] = compare_helper(A,B,0,0),
+    [ScoreA, ScoreB] = compare(A,B,0,0),
     [ScoreA,ScoreB].
 
-compare_helper([],[],ScoreA,ScoreB)->
+compare([],[],ScoreA,ScoreB)->
     [ScoreA,ScoreB];
-compare_helper([AHead | ATail], [BHead | BTail], ScoreA, ScoreB) ->
+compare([AHead | ATail], [BHead | BTail], ScoreA, ScoreB) ->
     {NewScoreA, NewScoreB} = case AHead of 
                                  BHead -> {ScoreA,ScoreB};
                                  _ -> 
@@ -20,4 +21,4 @@ compare_helper([AHead | ATail], [BHead | BTail], ScoreA, ScoreB) ->
                                         false -> {ScoreA,ScoreB+1}
                                     end
                             end,
-compare_helper(ATail,BTail,NewScoreA,NewScoreB).
+compare(ATail,BTail,NewScoreA,NewScoreB).
